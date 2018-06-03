@@ -12,14 +12,17 @@ class TableViewController: UIViewController,UITableViewDataSource,UITableViewDel
 {
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if UdacityClient.sharedInstance().studentInfoArray != nil
         {
             return (UdacityClient.sharedInstance().studentInfoArray?.count)!
-
         }
-        
         return 0
     }
     
@@ -31,23 +34,12 @@ class TableViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         cell.textLabel?.text = "\(s.firstName!) \(s.lastName!)"
         cell.detailTextLabel?.text = s.mediaURL!
-
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let app = UIApplication.shared
-        if let toOpen = UdacityClient.sharedInstance().studentInfoArray?[indexPath.row].mediaURL!
-        {
-            app.openURL(URL(string: toOpen)!)
-        }
+        AppDelegate.openURLInBrowser(urlString: UdacityClient.sharedInstance().studentInfoArray?[indexPath.row].mediaURL!)
     }
-
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
-
-
 }

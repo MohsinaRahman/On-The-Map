@@ -36,11 +36,6 @@ class TabBarViewController: UITabBarController
                 }
                 
             }
-            else
-            {
-               
-                
-            }
         }
     }
     

@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map-->
+        <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,7 +32,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="crK-S2-wAL"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_mapview-selected" id="crK-S2-wAL"/>
                     <connections>
                         <outlet property="mapView" destination="JdY-YI-wFe" id="WeX-6G-MFc"/>
                     </connections>
@@ -41,7 +41,7 @@
             </objects>
             <point key="canvasLocation" x="-1121" y="958"/>
         </scene>
-        <!--Table-->
+        <!--Table View Controller-->
         <scene sceneID="yyy-dw-YEe">
             <objects>
                 <viewController id="iNQ-v4-UNa" customClass="TableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,7 +93,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rdx-XD-xNs"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Table" id="EZX-jb-Vz3"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_listview-selected" id="EZX-jb-Vz3"/>
                     <connections>
                         <outlet property="tableView" destination="4gZ-oF-HTd" id="sI2-Os-ij3"/>
                     </connections>
@@ -178,7 +178,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Meg-cq-Zmi"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Location" id="fkS-9p-ZUK"/>
+                    <navigationItem key="navigationItem" title="Location" id="fkS-9p-ZUK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="sfF-V6-oll">
+                            <connections>
+                                <action selector="cancelPressed:" destination="7Q1-ur-kQK" id="C6a-o7-sTR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="locationTextField" destination="8VM-TO-YEF" id="LF0-zg-hRI"/>
                         <segue destination="jld-6K-PAg" kind="show" identifier="locationSegue" id="9ee-Zv-1Va"/>
@@ -223,6 +229,9 @@
                                 <rect key="frame" x="156.5" y="531" width="62" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitPressed:" destination="jld-6K-PAg" eventType="touchUpInside" id="pYw-8f-ojd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -240,6 +249,7 @@
                         <viewLayoutGuide key="safeArea" id="qWy-lY-EBl"/>
                     </view>
                     <connections>
+                        <outlet property="linkShareTextField" destination="4w5-Zy-72B" id="eZ6-zN-cXt"/>
                         <outlet property="mapView" destination="M8a-Zj-qDG" id="3BK-lc-4uC"/>
                     </connections>
                 </viewController>
@@ -385,4 +395,8 @@
             <point key="canvasLocation" x="-580" y="173"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_listview-selected" width="75" height="50"/>
+        <image name="icon_mapview-selected" width="75" height="50"/>
+    </resources>
 </document>

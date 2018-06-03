@@ -21,23 +21,34 @@ struct StudentInformation
     var latitude: Double?
     var longitude: Double?
     
+    init(uniqueKey: String, firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double)
+    {
+        self.uniqueKey = uniqueKey
+        self.firstName = firstName
+        self.lastName = lastName
+        self.mapString = mapString
+        self.mediaURL = mediaURL
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+    
     init (student: [String: AnyObject])
     {
-        uniqueKey = student["uniqueKey"] as? String
-        objectId = student["objectId"] as? String
-        mapString = student["mapString"] as? String
-        lastName = student["lastName"] as? String
-        firstName = student["firstName"] as? String
-        mediaURL = student["mediaURL"] as? String
-        createdAt = student["createdAt"] as? String
-        updatedAt = student["updatedAt"] as? String
-        latitude = student["latitude"] as? Double
-        longitude = student["longitude"] as? Double
+        uniqueKey = student[UdacityClient.Constants.JSONResponseKeys.StudentUniqueKey] as? String
+        objectId = student[UdacityClient.Constants.JSONResponseKeys.StudentObjectId] as? String
+        mapString = student[UdacityClient.Constants.JSONResponseKeys.StudentMapString] as? String
+        lastName = student[UdacityClient.Constants.JSONResponseKeys.StudentLastName] as? String
+        firstName = student[UdacityClient.Constants.JSONResponseKeys.StudentFirstName] as? String
+        mediaURL = student[UdacityClient.Constants.JSONResponseKeys.StudentMediaURL] as? String
+        createdAt = student[UdacityClient.Constants.JSONResponseKeys.StudentCreatedAt] as? String
+        updatedAt = student[UdacityClient.Constants.JSONResponseKeys.StudentUpdatedAt] as? String
+        latitude = student[UdacityClient.Constants.JSONResponseKeys.StudentLatitude] as? Double
+        longitude = student[UdacityClient.Constants.JSONResponseKeys.StudentLongitude] as? Double
     }
     
     func isValid() -> Bool
     {
-        var result = uniqueKey != nil && objectId != nil && mapString != nil && lastName != nil && firstName != nil && mediaURL != nil && createdAt != nil && updatedAt != nil && latitude != nil && longitude != nil
+        let result = uniqueKey != nil && objectId != nil && mapString != nil && lastName != nil && firstName != nil && mediaURL != nil && createdAt != nil && updatedAt != nil && latitude != nil && longitude != nil
         
         return result
     }

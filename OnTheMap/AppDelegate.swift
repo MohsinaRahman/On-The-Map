@@ -45,3 +45,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
 }
 
+extension AppDelegate
+{
+    static func showAlert(_ viewController: UIViewController, alertText:String)
+    {
+        let controller = UIAlertController()
+        controller.message = alertText
+        
+        let okAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default)
+        {
+            action in viewController.dismiss(animated: true, completion: nil)
+        }
+        
+        controller.addAction(okAction)
+        viewController.present(controller, animated: true, completion:nil)
+    }
+    
+    static func openURLInBrowser(urlString: String?)
+    {
+        let app = UIApplication.shared
+        if(urlString != nil)
+        {
+            let url = URL(string: urlString!)
+            if(url != nil)
+            {
+                app.open(url!, options: [:])
+            }
+        }
+    }
+}
+

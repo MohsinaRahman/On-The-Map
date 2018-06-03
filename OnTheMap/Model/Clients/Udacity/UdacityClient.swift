@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class UdacityClient: NSObject
 {
     var session = URLSession.shared
@@ -43,7 +44,7 @@ class UdacityClient: NSObject
     
     func configureRequest(url: URL, methodType: String, headers: [String: String]?, jsonBody: String?)->URLRequest
     {
-        let request = NSMutableURLRequest(url: url)
+        var request = URLRequest(url: url)
         
         request.httpMethod = methodType
         
@@ -57,10 +58,10 @@ class UdacityClient: NSObject
         
         if(jsonBody != nil)
         {
-            request.httpBody = jsonBody!.data(using: String.Encoding.utf8)
+            request.httpBody = jsonBody!.data(using: .utf8)
         }
         
-        return request as URLRequest
+        return request
     }
     
     func makeNetworkRequest(request: URLRequest, ignoreInitialCharacters: Bool, completionHandler: @escaping (AnyObject?,Error?)->Void)
@@ -68,11 +69,20 @@ class UdacityClient: NSObject
         let task = URLSession.shared.dataTask(with: request)
         {
             data, response, error in
+            
             func sendError(_ error: String)
             {
                 print(error)
+                let internetOfflineErrorMessage = "NSURLErrorDomain Code=-1009"
                 let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandler(nil, NSError(domain: "makeNetworkRequest", code: 1, userInfo: userInfo))
+                if(error.contains(internetOfflineErrorMessage))
+                {
+                    completionHandler(nil, NSError(domain: "noInternetConnection", code: 1, userInfo: userInfo))
+                }
+                else
+                {
+                    completionHandler(nil, NSError(domain: "makeNetworkRequest", code: 2, userInfo: userInfo))
+                }
             }
             
             // GUARD: Was there an error?

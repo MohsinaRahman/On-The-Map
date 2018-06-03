@@ -10,10 +10,8 @@ import UIKit
 
 class LogInViewController: UIViewController,UITextFieldDelegate
 {
-
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad()
@@ -23,7 +21,6 @@ class LogInViewController: UIViewController,UITextFieldDelegate
         password.delegate = self
         email.text = "nabila.rahman55@yahoo.com"
         password.text = "Ashiq888"
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -31,22 +28,22 @@ class LogInViewController: UIViewController,UITextFieldDelegate
         textField.resignFirstResponder()
         return true
     }
-
+    
     @IBAction func logInPressed(_ sender: Any)
     {
         if (email.text! == "" && password.text! == "")
         {
-            showAlert(alertText: "Empty Email Or Password")
+            AppDelegate.showAlert(self, alertText: "Empty Email Or Password")
             return
         }
         else if (email.text! == "")
         {
-            showAlert(alertText: "Empty Email")
+            AppDelegate.showAlert(self, alertText: "Empty Email")
             return
         }
         else if(password.text! == "")
         {
-            showAlert(alertText: "Empty Password")
+            AppDelegate.showAlert(self, alertText: "Empty Password")
             return
         }
         else
@@ -66,45 +63,26 @@ class LogInViewController: UIViewController,UITextFieldDelegate
                     UdacityClient.sharedInstance().sessionID = sessionID
                     
                     performUIUpdatesOnMain
-                    {
+                        {
                             self.showStudentInfoControllers()
                     }
                 }
                 else
                 {
                     performUIUpdatesOnMain
-                    {
-                        self.showAlert(alertText: "Invalid Email or Password")
+                        {
+                            AppDelegate.showAlert(self, alertText: errorString!)
                     }
-                    
                 }
             }
         }
     }
     
-    func showAlert(alertText:String)
-    {
-        let controller = UIAlertController()
-        controller.message = alertText
-        
-        let okAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default)
-        {
-            action in self.dismiss(animated: true, completion: nil)
-            
-        }
-        controller.addAction(okAction)
-        present (controller, animated: true, completion:nil)
-    }
-    
     func showStudentInfoControllers()
     {
-        
         let controller: UINavigationController
         controller = storyboard?.instantiateViewController(withIdentifier: "navController") as! UINavigationController
         
         present(controller, animated: true, completion: nil)
     }
-    
-    
-   
 }
