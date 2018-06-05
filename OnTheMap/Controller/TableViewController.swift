@@ -19,9 +19,9 @@ class TableViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if UdacityClient.sharedInstance().studentInfoArray != nil
+        if StudentsDatasource.sharedInstance().studentInfoArray != nil
         {
-            return (UdacityClient.sharedInstance().studentInfoArray?.count)!
+            return (StudentsDatasource.sharedInstance().studentInfoArray?.count)!
         }
         return 0
     }
@@ -30,7 +30,7 @@ class TableViewController: UIViewController,UITableViewDataSource,UITableViewDel
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentCell")!
         
-        let s = UdacityClient.sharedInstance().studentInfoArray![indexPath.row]
+        let s = StudentsDatasource.sharedInstance().studentInfoArray![indexPath.row]
         
         cell.textLabel?.text = "\(s.firstName!) \(s.lastName!)"
         cell.detailTextLabel?.text = s.mediaURL!
@@ -40,6 +40,6 @@ class TableViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        AppDelegate.openURLInBrowser(urlString: UdacityClient.sharedInstance().studentInfoArray?[indexPath.row].mediaURL!)
+        AppDelegate.openURLInBrowser(urlString: StudentsDatasource.sharedInstance().studentInfoArray?[indexPath.row].mediaURL!)
     }
 }

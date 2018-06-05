@@ -29,7 +29,7 @@ class TabBarViewController: UITabBarController
                 
                 performUIUpdatesOnMain
                 {
-                    self.showlogin()
+                    self.dismiss(animated: true)
                 }
             }
         }
@@ -43,7 +43,7 @@ class TabBarViewController: UITabBarController
     
     @IBAction func addLocationPressed(_ sender: Any)
     {
-        UdacityClient.sharedInstance().getStudentLocationNetworkRequest(uniqueKey: UdacityClient.sharedInstance().accountID)
+        UdacityClient.sharedInstance().getStudentLocationNetworkRequest(uniqueKey: UdacityClient.sharedInstance().accountID, limit: nil)
         {
             (_ success: Bool, _ studentInfoArray: [StudentInformation], _ errorString: String?)->Void in
             
@@ -60,13 +60,6 @@ class TabBarViewController: UITabBarController
                 }
         }
         
-    }
-    
-    func showlogin()
-    {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "loginpageid") as! LogInViewController
-        
-        present(controller, animated: true, completion: nil)
     }
     
     func showOVerwriteAlert()

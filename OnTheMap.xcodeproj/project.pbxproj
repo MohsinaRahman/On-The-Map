@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA3F90A620C7165300B7AF3F /* StudentDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3F90A520C7165300B7AF3F /* StudentDatasource.swift */; };
 		CA51659520B359AD000F8E96 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51659420B359AD000F8E96 /* TableViewController.swift */; };
 		CA51659720B8A086000F8E96 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51659620B8A086000F8E96 /* TabBarViewController.swift */; };
 		CA5A023F209CEC910064697B /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A023E209CEC910064697B /* GCDBlackBox.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA3F90A520C7165300B7AF3F /* StudentDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDatasource.swift; sourceTree = "<group>"; };
 		CA51659420B359AD000F8E96 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		CA51659620B8A086000F8E96 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CA5A023E209CEC910064697B /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				CA5A024D20AE663E0064697B /* UdacityConvenience.swift */,
 				CA5A024920AA18B10064697B /* UdacityConstants.swift */,
 				CA5A025020AF65230064697B /* UdacityStudentLocation.swift */,
+				CA3F90A520C7165300B7AF3F /* StudentDatasource.swift */,
 			);
 			path = Udacity;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				CA5CBF47208FBD0F0096A1AE /* MapViewController.swift in Sources */,
 				CA51659520B359AD000F8E96 /* TableViewController.swift in Sources */,
 				CA5A025120AF65230064697B /* UdacityStudentLocation.swift in Sources */,
+				CA3F90A620C7165300B7AF3F /* StudentDatasource.swift in Sources */,
 				CAD97FDF209A4CE500905475 /* LogInViewController.swift in Sources */,
 				CA5A023F209CEC910064697B /* GCDBlackBox.swift in Sources */,
 				CA5CBF45208FBD0F0096A1AE /* AppDelegate.swift in Sources */,

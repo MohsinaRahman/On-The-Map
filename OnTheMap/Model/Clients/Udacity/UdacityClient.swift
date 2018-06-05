@@ -11,11 +11,8 @@ import Foundation
 class UdacityClient: NSObject
 {
     var session = URLSession.shared
-    //var config = TMDBConfig()
-    var requestToken: String? = nil
     var sessionID: String? = nil
     var accountID: String? = nil
-    var studentInfoArray :[StudentInformation]? = nil
     
     override init()
     {

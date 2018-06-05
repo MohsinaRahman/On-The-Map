@@ -32,6 +32,8 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
         annotateMapView()
     
         linkShareTextField.delegate = self
+        
+        linkShareTextField.text = "http://www.udacity.com"
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -51,7 +53,7 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
             return
         }
         
-        UdacityClient.sharedInstance().getStudentLocationNetworkRequest(uniqueKey: UdacityClient.sharedInstance().accountID)
+        UdacityClient.sharedInstance().getStudentLocationNetworkRequest(uniqueKey: UdacityClient.sharedInstance().accountID, limit: nil)
         {
             (_ success: Bool, _ studentInfoArray: [StudentInformation], _ errorString: String?)->Void in
             

@@ -115,7 +115,7 @@ extension UdacityClient
         }
     }
     
-    func getStudentLocationNetworkRequest(uniqueKey: String?, completionHandler: @escaping (_ success: Bool,_ studentInfoArray:[StudentInformation],_ errorString: String?)->Void)
+    func getStudentLocationNetworkRequest(uniqueKey: String?, limit: Int?, completionHandler: @escaping (_ success: Bool,_ studentInfoArray:[StudentInformation],_ errorString: String?)->Void)
     {
         // Build URL
         let URL : URL
@@ -131,6 +131,15 @@ extension UdacityClient
             value = "{\"\(Constants.JSONResponseKeys.StudentUniqueKey)\":\"\(uniqueKey!)\"}"
             parameters[key] = value as AnyObject
         }
+        
+        // Add the limit key
+        if(limit != nil)
+        {
+            // Add the unique ID
+            key = "limit"
+            parameters[key] = limit! as AnyObject
+        }
+        
         
         // Add the order (use - for descending)
         key = "order"

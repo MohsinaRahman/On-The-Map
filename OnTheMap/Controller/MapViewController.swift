@@ -19,16 +19,16 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         self.mapView.delegate = self
         
-        if(UdacityClient.sharedInstance().studentInfoArray == nil)
+        if(StudentsDatasource.sharedInstance().studentInfoArray == nil)
         {
             self.mapView.alpha = CGFloat(0.5)
-            UdacityClient.sharedInstance().getStudentLocationNetworkRequest(uniqueKey: nil)
+            UdacityClient.sharedInstance().getStudentLocationNetworkRequest(uniqueKey: nil, limit: 100)
             {
                 (_ success: Bool, _ studentInfoArray: [StudentInformation], _ errorString: String?)->Void in
                 
                 if(success)
                 {
-                    UdacityClient.sharedInstance().studentInfoArray = studentInfoArray
+                    StudentsDatasource.sharedInstance().studentInfoArray = studentInfoArray
                     
                     performUIUpdatesOnMain
                         {
@@ -87,7 +87,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     func annotateMapView()
     {
-        for studentInfo in UdacityClient.sharedInstance().studentInfoArray!
+        for studentInfo in StudentsDatasource.sharedInstance().studentInfoArray!
         {
             // Create an annotation
             let annotation = MKPointAnnotation()
