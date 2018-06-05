@@ -55,7 +55,6 @@ extension UdacityClient
         }
     }
     
-    
     func makeLogoutNetworkRequest(completionHandler: @escaping (_ success: Bool,_ sessionID: String?, _ expiration: String?, _ errorString: String?)->Void)
     {
         // Build URL

@@ -17,6 +17,7 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
     var lat: CLLocationDegrees = 0.0
     var long: CLLocationDegrees = 0.0
     var mapString: String?
+    var mediaURL: String?
     
     override func viewDidLoad()
     {
@@ -29,8 +30,7 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
         mapView.delegate = self
         mapView.setRegion(coordinateRegion, animated: true)
         annotateMapView()
-        
-        linkShareTextField.text = "http://www.udacity.com"
+    
         linkShareTextField.delegate = self
     }
     
@@ -43,6 +43,14 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
     
     @IBAction func submitPressed(_ sender: Any)
     {
+        let link = self.linkShareTextField.text!
+        
+        if self.linkShareTextField.text!.isEmpty
+        {
+            showLinkShareError(message: "Linkshare cannot be empty!")
+            return
+        }
+        
         UdacityClient.sharedInstance().getStudentLocationNetworkRequest(uniqueKey: UdacityClient.sharedInstance().accountID)
         {
             (_ success: Bool, _ studentInfoArray: [StudentInformation], _ errorString: String?)->Void in
@@ -64,7 +72,7 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
                                 firstName: firstName!,
                                 lastName: lastName!,
                                 mapString: self.mapString!,
-                                mediaURL: self.linkShareTextField.text!,
+                                mediaURL: link,
                                 latitude: self.lat,
                                 longitude: self.long
                             )
@@ -102,6 +110,7 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
                     s.latitude = self.lat
                     s.longitude = self.long
                     s.mapString = self.mapString
+                    s.mediaURL = link
                     
                     UdacityClient.sharedInstance().putStudentLocation(s: s)
                     {
@@ -160,5 +169,14 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
         annotation.title = "\(mapString!)"
         
         self.mapView.addAnnotation(annotation)
+    }
+    
+    func showLinkShareError(message: String)
+    {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
     }
 }

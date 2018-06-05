@@ -370,7 +370,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="BIu-LL-FPW">
                                 <connections>
-                                    <segue destination="7Q1-ur-kQK" kind="show" id="BJb-jf-LTG"/>
+                                    <action selector="addLocationPressed:" destination="5x0-n3-j9j" id="kjr-lL-1jt"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="xQF-SZ-vAi">
@@ -388,6 +388,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="dh7-kv-S29"/>
                         <segue destination="iNQ-v4-UNa" kind="relationship" relationship="viewControllers" id="dYU-k1-TrQ"/>
+                        <segue destination="7Q1-ur-kQK" kind="show" identifier="segueToLocation" id="nZx-35-3zD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJA-QG-2xe" userLabel="First Responder" sceneMemberID="firstResponder"/>

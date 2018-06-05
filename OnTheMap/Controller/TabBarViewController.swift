@@ -10,14 +10,11 @@ import UIKit
 
 class TabBarViewController: UITabBarController
 {
-
     override func viewDidLoad()
     {
         super.viewDidLoad()
     }
 
-    
-    
     @IBAction func logoutPressed(_ sender: Any)
     {
         UdacityClient.sharedInstance().makeLogoutNetworkRequest()
@@ -34,7 +31,6 @@ class TabBarViewController: UITabBarController
                 {
                     self.showlogin()
                 }
-                
             }
         }
     }
@@ -45,6 +41,27 @@ class TabBarViewController: UITabBarController
         
     }
     
+    @IBAction func addLocationPressed(_ sender: Any)
+    {
+        UdacityClient.sharedInstance().getStudentLocationNetworkRequest(uniqueKey: UdacityClient.sharedInstance().accountID)
+        {
+            (_ success: Bool, _ studentInfoArray: [StudentInformation], _ errorString: String?)->Void in
+            
+                if(success)
+                {
+                    if(!studentInfoArray.isEmpty)
+                    {
+                        self.showOVerwriteAlert()
+                    }
+                    else
+                    {
+                        self.performSegue(withIdentifier: "segueToLocation", sender: self)
+                    }
+                }
+        }
+        
+    }
+    
     func showlogin()
     {
         let controller = storyboard?.instantiateViewController(withIdentifier: "loginpageid") as! LogInViewController
@@ -52,4 +69,14 @@ class TabBarViewController: UITabBarController
         present(controller, animated: true, completion: nil)
     }
     
+    func showOVerwriteAlert()
+    {
+        let alert = UIAlertController(title: nil, message: "You already have posted a student location. Would you like to overwrite your current location?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Overwrite", style: .default, handler: { _ in self.performSegue(withIdentifier: "segueToLocation", sender: self)}))
+
+        
+        self.present(alert, animated: true)
+    }
 }
