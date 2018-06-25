@@ -25,57 +25,12 @@ class LocationViewController: UIViewController, UITextFieldDelegate
         activityIndicator.center = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
         activityIndicator.color = UIColor.yellow
         self.view.addSubview(activityIndicator)
-        
-        locationTextField.text = "San Diego"
-    }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        super.viewWillAppear(animated)
-        
-        subscribeToKeyboardNotifications()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool)
-    {
-        unsubscribeToKeyboardNotifications()
-        
-        super.viewWillDisappear(animated)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
         return true
-    }
-    
-    func subscribeToKeyboardNotifications()
-    {
-        NotificationCenter.default.addObserver(self, selector: #selector (keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector (keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
-    }
-    
-    func unsubscribeToKeyboardNotifications()
-    {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
-    }
-    
-    @objc func keyboardWillShow(_ notification: Notification)
-    {
-        view.frame.origin.y -= getKeyBoardHeight(notification)
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification)
-    {
-        view.frame.origin.y = 0
-    }
-    
-    func getKeyBoardHeight(_ notification: Notification)->CGFloat
-    {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.cgRectValue.height
     }
     
     @IBAction func findOnTheMap(_ sender: Any)
@@ -117,7 +72,7 @@ class LocationViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func cancelPressed(_ sender: Any)
     {
-        self.navigationController?.popViewController(animated: true)
+       self.dismiss(animated:true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)

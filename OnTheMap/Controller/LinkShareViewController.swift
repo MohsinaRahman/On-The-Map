@@ -32,8 +32,6 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
         annotateMapView()
     
         linkShareTextField.delegate = self
-        
-        linkShareTextField.text = "http://www.udacity.com"
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -88,8 +86,8 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
                                     print("Created record for \(s.firstName!) \(s.lastName!) at \(createdAt!) - object ID = \(objectID!)")
                                     
                                     performUIUpdatesOnMain
-                                        {
-                                            self.navigationController?.popToRootViewController(animated: true)
+                                    {
+                                        self.dismiss(animated: true)
                                     }
                                 }
                                 else
@@ -123,8 +121,8 @@ class LinkShareViewController:UIViewController,MKMapViewDelegate, UITextFieldDel
                             print("Updated record for \(s.firstName!) \(s.lastName!) at \(updatedAt!)")
                             
                             performUIUpdatesOnMain
-                                {
-                                    self.navigationController?.popToRootViewController(animated: true)
+                            {
+                                 self.dismiss(animated: true)
                             }
                         }
                         else

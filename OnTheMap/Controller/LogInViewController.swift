@@ -19,9 +19,6 @@ class LogInViewController: UIViewController,UITextFieldDelegate
         super.viewDidLoad()
         email.delegate = self
         password.delegate = self
-        
-        email.text = "nabila.rahman55@yahoo.com"
-        password.text = "Ashiq888"
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -71,8 +68,8 @@ class LogInViewController: UIViewController,UITextFieldDelegate
                 else
                 {
                     performUIUpdatesOnMain
-                        {
-                            AppDelegate.showAlert(self, alertText: errorString!)
+                    {
+                       AppDelegate.showAlert(self, alertText: errorString!)
                     }
                 }
             }
