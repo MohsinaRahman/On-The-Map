@@ -46,7 +46,7 @@ In this viewControler, users can post or put their own data in two steps. Adding
 
 # Build and run
 
-* Please navigate to the following URL: https://github.com/MohsinaRahman/GetNews
+* Please navigate to the following URL: https://github.com/MohsinaRahman/On-The-Map
 
 * Click on the green button labeled Clone or Download
 
