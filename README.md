@@ -11,10 +11,29 @@ In this viewController, users log in to the app using their Udacity username and
 
 ### MapViewController:
 MapViewController shows the pins last 100 locations posted by the other students. The locations are specified with a string and forward geocoded. They can be as specific as a full street address or as generic as “New York” or “San Diego, CA”
+
+
+![alt text](https://github.com/MohsinaRahman/On-The-Map/blob/master/mapview_page.png "Mapview Page")
+
 ### ListViewController:
 listViewController displays the most latest 100 locations and link posted by other students in a tableView settings. By tapping on the raw, user can see the associated link.
+
+
+![alt text](https://github.com/MohsinaRahman/On-The-Map/blob/master/studentinformation_page.png "Studentinformation Page")
+
 ### PinViewController:
 In this viewControler, users can post or put their own data in two steps. Adding the location and the link.
+
+
+![alt text](https://github.com/MohsinaRahman/On-The-Map/blob/master/link_page.png "Link Page")
+
+
+![alt text](https://github.com/MohsinaRahman/On-The-Map/blob/master/linkmap_page.png "Linkmap Page")
+
+
+![alt text](https://github.com/MohsinaRahman/On-The-Map/blob/master/post_page.png "post Page")
+
+
 # Tools
 * MapKit
 * UITableViewController
