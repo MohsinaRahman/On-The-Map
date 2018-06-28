@@ -42,3 +42,6 @@ In this viewControler, users can post or put their own data in two steps. Adding
 # Requirements
 * Xcode 9
 * Swift 4.0
+
+# Build and run
+For run the app, a user should go to the Clone or Download file. By clicking that, it will give the option for downloading a zip file. By clicking download zip file, it will automatically save on the desktop or in the download file. After that, open the GetNews-master folder and click on the project5.xcodeproj to see the full project or project5 folder to see the project related files.
