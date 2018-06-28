@@ -5,6 +5,10 @@ Built an app that gives the users to be able to see the location and an attached
 # App functionalities
 ### LoginViewController: 
 In this viewController, users log in to the app using their Udacity username and password. After login, the app will attempt to authenticate with Udacity’s servers. If the login does not succeed, alert view automatically show the error massage if either email or password are incorrect.
+
+
+![alt text](https://github.com/MohsinaRahman/On-The-Map/blob/master/login_page.png "Login Page")
+
 ### MapViewController:
 MapViewController shows the pins last 100 locations posted by the other students. The locations are specified with a string and forward geocoded. They can be as specific as a full street address or as generic as “New York” or “San Diego, CA”
 ### ListViewController:
