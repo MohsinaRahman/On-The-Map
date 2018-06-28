@@ -43,5 +43,23 @@ In this viewControler, users can post or put their own data in two steps. Adding
 * Xcode 9
 * Swift 4.0
 
+
 # Build and run
-For run the app, a user should go to the Clone or Download file. By clicking that, it will give the option for downloading a zip file. By clicking download zip file, it will automatically save on the desktop or in the download file. After that, open the On-The-Map-master folder and click on the OnTheMap.xcodeproj to see the full project or OnTheMap folder to see the project related files.
+
+* Please navigate to the following URL: https://github.com/MohsinaRahman/GetNews
+
+* Click on the green button labeled Clone or Download
+
+* Choose the download zip option
+
+* Unzip the downloaded zip file.
+
+* Navigate inside the unzipped folder.
+
+* Click on the file labeled OnTheMap.xcodeProject
+
+* If a warning dialog appears, click on Open Anyway
+
+* Click on the OnTheMap project
+
+* Simultaneously press Command + B to run
